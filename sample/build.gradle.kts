@@ -4,7 +4,7 @@ plugins {
 }
 
 application {
-	mainClassName = "com.aafanasev.chucknorris.Main"
+	mainClassName = "com.aafanasev.chucknorrissample.MainKt"
 }
 
 dependencies {
