@@ -4,8 +4,7 @@ Thumbs.db
 
 # gradle
 /.gradle
-/build
-/out
+build
 
 # IDE
 /.idea
