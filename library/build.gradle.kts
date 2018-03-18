@@ -17,6 +17,13 @@ val dokka by tasks.getting(org.jetbrains.dokka.gradle.DokkaTask::class) {
     outputDirectory = "$buildDir/javadoc"
 }
 
+val dokkaJar by tasks.creating(org.gradle.jvm.tasks.Jar::class) {
+    group = JavaBasePlugin.DOCUMENTATION_GROUP
+    description = "Chuck Norris API Client"
+    classifier = "javadoc"
+    from(dokka)
+}
+
 plugins {
     kotlin("jvm")
 }
