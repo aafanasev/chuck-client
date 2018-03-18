@@ -1,3 +1,5 @@
+@file:JvmName("KotlinSample")
+
 package com.aafanasev.chucknorrissample
 
 import com.aafanasev.chucknorris.ChuckNorrisApiClient

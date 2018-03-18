@@ -3,8 +3,11 @@ plugins {
 }
 
 dependencies {
+    val retrofitGroup = "com.squareup.retrofit2"
+    val retrofitVersion = "2.3.0"
+
     implementation(kotlin("stdlib"))
-    compile(group = "com.squareup.retrofit2", name = "retrofit", version = "2.3.0")
-    compile(group = "com.squareup.retrofit2", name = "adapter-rxjava2", version = "2.3.0")
-    implementation(group = "com.squareup.retrofit2", name = "converter-gson", version = "2.3.0")
+    compile(group = retrofitGroup, name = "retrofit", version = retrofitVersion)
+    compile(group = retrofitGroup, name = "adapter-rxjava2", version = retrofitVersion)
+    implementation(group = retrofitGroup, name = "converter-gson", version = retrofitVersion)
 }

@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ChuckNorrisApiClient : ChuckNorrisApiService {
+object ChuckNorrisApiClient {
 
     private const val BASE_URL = "https://api.chucknorris.io/jokes/"
 
@@ -17,10 +17,13 @@ object ChuckNorrisApiClient : ChuckNorrisApiService {
                 .create(ChuckNorrisApiService::class.java)
     }
 
-    override fun searchJokes(query: String) = service.searchJokes(query)
+    @JvmStatic
+    fun searchJokes(query: String) = service.searchJokes(query)
 
-    override fun getCategories() = service.getCategories()
+    @JvmStatic
+    fun getCategories() = service.getCategories()
 
-    override fun getRandomJoke(category: Category?) = service.getRandomJoke(category)
+    @JvmStatic
+    fun getRandomJoke(category: Category? = null) = service.getRandomJoke(category)
 
 }
