@@ -25,6 +25,7 @@ val dokkaJar by tasks.creating(org.gradle.jvm.tasks.Jar::class) {
 }
 
 plugins {
+    `maven-publish`
     kotlin("jvm")
 }
 
@@ -36,4 +37,26 @@ dependencies {
     compile(group = retrofitGroup, name = "retrofit", version = retrofitVersion)
     compile(group = retrofitGroup, name = "adapter-rxjava2", version = retrofitVersion)
     implementation(group = retrofitGroup, name = "converter-gson", version = retrofitVersion)
+}
+
+group = "com.aafanasev"
+version = "0.0.1"
+
+publishing {
+
+    publications {
+
+        create("default", MavenPublication::class.java) {
+            artifactId = "chucknorrisapiclient"
+            from(components["java"])
+            artifact(dokkaJar)
+        }
+    }
+
+    repositories {
+        maven {
+            url = uri("$buildDir/repository")
+        }
+    }
+
 }
