@@ -17,12 +17,22 @@ object ChuckNorrisApiClient {
                 .create(ChuckNorrisApiService::class.java)
     }
 
+    /**
+     * Search jokes
+     */
     @JvmStatic
     fun searchJokes(query: String) = service.searchJokes(query)
 
+    /**
+     * Get all categories
+     */
     @JvmStatic
     fun getCategories() = service.getCategories()
 
+    /**
+     * Get random joke
+     * @param category optional
+     */
     @JvmStatic
     fun getRandomJoke(category: Category? = null) = service.getRandomJoke(category)
 
