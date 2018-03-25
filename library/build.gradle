@@ -1,0 +1,15 @@
+apply plugin: "kotlin"
+apply from: "../buildsystem/dokka.gradle"
+
+group = "com.aafanasev"
+version = "0.0.1"
+
+dependencies {
+    ext.retrofit_group = "com.squareup.retrofit2"
+    ext.retrofit_version = "2.3.0"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "$retrofit_group:retrofit:$retrofit_version"
+    implementation "$retrofit_group:converter-gson:$retrofit_version"
+    compile "$retrofit_group:adapter-rxjava2:$retrofit_version"
+}

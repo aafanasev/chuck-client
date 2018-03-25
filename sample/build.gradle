@@ -1,0 +1,9 @@
+apply plugin: "application"
+apply plugin: "kotlin"
+
+mainClassName = "com.aafanasev.chucknorrissample.KotlinSample"
+
+dependencies {
+    compile project(":library")
+    compile "org.jetbrains.kotlin:kotlin-stdlib"
+}
