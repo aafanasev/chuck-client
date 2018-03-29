@@ -8,13 +8,23 @@ Plain Java client is [here](https://github.com/chucknorris-io/client-java)
 
 Retrieve random joke:
 
+Kotlin:
+
 ```kotlin
-ChuckNorrisApiClient.getRandomJoke().subscribe(joke -> {
-    println(joke.value)
+ChuckNorrisApiClient.getRandomJoke().subscribe { 
+    randomJoke -> println(randomJoke.value) 
+}
+```
+
+Java:
+
+```kotlin
+ChuckNorrisApiClient.getCategories().subscribe(categories -> {
+    System.out.println(categories);
 });
 ```
 
-More samples in [docs](/docs/index.md)
+More info in [docs](/docs/index.md)
 
 ## Install
 
