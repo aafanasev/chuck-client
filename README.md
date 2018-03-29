@@ -37,7 +37,7 @@ ChuckNorrisApiClient.getCategories().subscribe(categories -> {
 });
 ```
 
-More info in [samples](tree/master/sample/src/main/kotlin/com/aafanasev/chucknorrissample) and [docs](/docs/index.md)
+More info in [samples](/sample/src/main/kotlin/com/aafanasev/chucknorrissample) and [docs](/docs/index.md)
 
 ## Install
 
