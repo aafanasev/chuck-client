@@ -1,0 +1,40 @@
+apply plugin: "maven-publish"
+apply plugin: "com.jfrog.bintray"
+
+publishing {
+    publications {
+        ChuckNorris(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId chuck.group
+            artifactId chuck.name
+            version chuck.version
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+
+    publications = ["ChuckNorris"]
+
+    pkg {
+        repo = "maven"
+        name = chuck.name
+        vcsUrl = "https://github.com/aafanasev/chuck-norris-api-rx-client.git"
+
+        labels = ["chuck", "norris"]
+        licenses = ["Apache-2.0"]
+
+        publicDownloadNumbers = true
+
+        version {
+            name = chuck.version
+            desc = "Chuck Norris Api Client - https://chucknorris.io"
+            released = new Date()
+        }
+    }
+
+}

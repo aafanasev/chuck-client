@@ -5,7 +5,12 @@ dokka {
     outputDirectory = "$buildDir/javadoc"
 }
 
+task sourcesJar(type: Jar) {
+    classifier = "sources"
+    from sourceSets.main.allSource
+}
+
 task javadocJar(type: Jar, dependsOn: dokka) {
     classifier = "javadoc"
-    from javadoc.destinationDir
+    from dokka.outputDirectory
 }
