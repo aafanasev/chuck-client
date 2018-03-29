@@ -1,14 +1,16 @@
 # Chuck Norris - RxJava API Client
 
+<p align="center">
+    <img src="https://assets.chucknorris.host/img/chucknorris_logo_coloured_small@2x.png" width="300">
+</p>
+
 https://chucknorris.io is a free JSON API for hand curated Chuck Norris facts
 
 Plain Java client is [here](https://github.com/chucknorris-io/client-java)
 
 ## Usage
 
-Retrieve random joke:
-
-Kotlin:
+Retrieve random joke (*kotlin*):
 
 ```kotlin
 ChuckNorrisApiClient.getRandomJoke().subscribe { 
@@ -16,15 +18,26 @@ ChuckNorrisApiClient.getRandomJoke().subscribe {
 }
 ```
 
-Java:
+Search jokes (*kotlin*):
 
 ```kotlin
+ChuckNorrisApiClient.searchJokes("php").subscribe { result ->
+    println("""
+            Found: ${result.total}
+            First fact: ${result.jokes[0].value}
+            """.trimIndent())
+}
+```
+
+Get all categories (*java*):
+
+```java
 ChuckNorrisApiClient.getCategories().subscribe(categories -> {
     System.out.println(categories);
 });
 ```
 
-More info in [docs](/docs/index.md)
+More info in [samples](tree/master/sample/src/main/kotlin/com/aafanasev/chucknorrissample) and [docs](/docs/index.md)
 
 ## Install
 
