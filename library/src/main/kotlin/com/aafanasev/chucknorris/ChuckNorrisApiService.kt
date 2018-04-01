@@ -4,7 +4,7 @@ import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-internal interface ChuckNorrisApiService {
+interface ChuckNorrisApiService {
 
     @GET("search")
     fun searchJokes(@Query("query") query: String): Single<SearchResult>
