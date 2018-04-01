@@ -23,7 +23,7 @@ bintray {
     pkg {
         repo = "maven"
         name = chuck.name
-        vcsUrl = "https://github.com/aafanasev/chuck-norris-api-rx-client.git"
+        vcsUrl = "https://github.com/aafanasev/chucknorris-client.git"
 
         labels = ["chuck", "norris"]
         licenses = ["Apache-2.0"]
