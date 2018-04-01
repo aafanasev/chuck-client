@@ -2,25 +2,37 @@
 
 package com.aafanasev.chucknorrissample
 
-import com.aafanasev.chucknorris.ChuckNorrisApiClient
+import com.aafanasev.chucknorris.ChuckNorrisApiFactory
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 
 fun main(args: Array<String>) {
 
+    val interceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BASIC
+    }
+
+    val httpClient = OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
+
+    val api = ChuckNorrisApiFactory().create(httpClient)
+
     println("\n--- all categories ---\n")
 
-    ChuckNorrisApiClient.getCategories().subscribe { categories -> println(categories) }
+    api.getCategories().subscribe { categories -> println(categories) }
 
     println("\n--- random joke ---\n")
 
-    ChuckNorrisApiClient.getRandomJoke().subscribe { randomJoke -> println(randomJoke.value) }
+    api.getRandomJoke().subscribe { randomJoke -> println(randomJoke.value) }
 
     println("\n--- random joke from category ---\n")
 
-    ChuckNorrisApiClient.getRandomJoke("dev").subscribe { randomJoke -> println(randomJoke.value) }
+    api.getRandomJoke("dev").subscribe { randomJoke -> println(randomJoke.value) }
 
     println("\n--- search jokes ---\n")
 
-    ChuckNorrisApiClient.searchJokes("java").subscribe { result ->
+    api.searchJokes("java").subscribe { result ->
         println("""
             Found: ${result.total}
             First joke: ${result.jokes[0].value}

@@ -6,4 +6,5 @@ mainClassName = "com.aafanasev.chucknorrissample.KotlinSample"
 dependencies {
     compile project(":library")
     compile "org.jetbrains.kotlin:kotlin-stdlib"
+    compile "com.squareup.okhttp3:logging-interceptor:3.10.0"
 }
