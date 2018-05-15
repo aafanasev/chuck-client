@@ -1,4 +1,5 @@
 apply plugin: "kotlin"
+apply plugin: "kotlin-kapt"
 apply from: "$rootDir/buildsystem/dependencies.gradle"
 apply from: "$rootDir/buildsystem/dokka.gradle"
 apply from: "$rootDir/buildsystem/publish.gradle"
@@ -7,12 +8,27 @@ archivesBaseName = chuck.name
 group = chuck.group
 version = chuck.version
 
+kapt {
+    generateStubs = true
+}
+
+sourceSets.main.java.srcDir file("$buildDir/generated/source/kaptKotlin/")
+
+repositories {
+    maven { url 'https://dl.bintray.com/aafanasev/maven' }
+}
+
 dependencies {
     def retrofit_group = "com.squareup.retrofit2"
     def retrofit_version = "2.3.0"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "com.google.code.gson:gson:2.8.2"
+
     implementation "$retrofit_group:retrofit:$retrofit_version"
     implementation "$retrofit_group:converter-gson:$retrofit_version"
     compile "$retrofit_group:adapter-rxjava2:$retrofit_version"
+
+    implementation "com.aafanasev:kson-annotation:0.2"
+    kapt "com.aafanasev:kson-processor:0.2"
 }
