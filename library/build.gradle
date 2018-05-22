@@ -14,10 +14,6 @@ kapt {
 
 sourceSets.main.java.srcDir file("$buildDir/generated/source/kaptKotlin/")
 
-repositories {
-    maven { url 'https://dl.bintray.com/aafanasev/maven' }
-}
-
 dependencies {
     def retrofit_group = "com.squareup.retrofit2"
     def retrofit_version = "2.3.0"
@@ -29,6 +25,6 @@ dependencies {
     implementation "$retrofit_group:converter-gson:$retrofit_version"
     compile "$retrofit_group:adapter-rxjava2:$retrofit_version"
 
-    implementation "com.aafanasev:kson-annotation:0.2"
-    kapt "com.aafanasev:kson-processor:0.2"
+    implementation "com.aafanasev:kson-annotation:0.4"
+    kapt "com.aafanasev:kson-processor:0.4"
 }
